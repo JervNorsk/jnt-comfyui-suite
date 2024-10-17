@@ -1,0 +1,6 @@
+[submodule "externals/pythongosssss/custom-scripts"]
+	path = externals/pythongosssss/custom-scripts
+	url = https://github.com/pythongosssss/ComfyUI-Custom-Scripts
+[submodule "externals/pythongosssss/wd14-tagger"]
+	path = externals/pythongosssss/wd14-tagger
+	url = https://github.com/pythongosssss/ComfyUI-WD14-Tagger
