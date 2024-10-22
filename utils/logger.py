@@ -1,13 +1,12 @@
-"""
-@author: JervNorsk
-"""
 ###############################################################################
 # Dependencies
 # -----------------------------------------------------------------------------
 import os
 import importlib
+import logging
 
 from . import path
+
 
 ###############################################################################
 # Constants
@@ -18,7 +17,6 @@ from . import path
 # Declarations
 # -----------------------------------------------------------------------------
 def __getLogger(name):
-    logging = importlib.import_module('logging')
     # logging.basicConfig(
     #     format = '## %(message)s',
     #     handlers=[
@@ -27,8 +25,8 @@ def __getLogger(name):
     # )
     return logging.getLogger(name)
 
+
 ###############################################################################
 # Exports
 # -----------------------------------------------------------------------------
 LOG = __getLogger(os.path.basename(path.JNT_DIR))
-LOG.info("Test %s", LOG.name)

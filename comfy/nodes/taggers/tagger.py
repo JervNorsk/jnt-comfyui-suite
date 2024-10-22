@@ -5,8 +5,10 @@ import os
 import sys
 import importlib
 
-from ....utils.path import JNT_DIR
+from .... import externals
+from ....utils.logger import LOG
 from ... import nodes
+
 
 ###############################################################################
 # Constants
@@ -23,7 +25,7 @@ JNT_CONFIG = {
 # -----------------------------------------------------------------------------
 class JntTagger:
     """
-    TODO
+    TODO: write documentation
     """
     CONFIG = {
         "id": f"{JNT_CONFIG.get('id')}.tagger",
@@ -49,7 +51,6 @@ class JntTagger:
     # -------------------------------------------------------------------------
     @classmethod
     def INPUT_TYPES(cls):
-        tagger = cls.get_wd14tagger()
         return {
             "required": {
                 "image": ("IMAGE",),
@@ -69,19 +70,8 @@ class JntTagger:
 
     @classmethod
     def get_wd14tagger(cls):
-        COMFY_CUSTOM_NODE_WD14_DIR = os.path.join(JNT_DIR, "externals", "pythongosssss", "wd14-tagger")
-
         if cls.__wd14tagger is None:
-            cleanup = False
-            try:
-                if COMFY_CUSTOM_NODE_WD14_DIR not in sys.path:
-                    sys.path.append(COMFY_CUSTOM_NODE_WD14_DIR)
-                    cleanup = True
-
-                cls.__wd14tagger = importlib.import_module("ComfyUI-WD14-Tagger.wd14tagger")
-            finally:
-                if cleanup:
-                    sys.path.remove(COMFY_CUSTOM_NODE_WD14_DIR)
+            cls.__wd14tagger = externals.WD14TAGGER().wd14tagger
 
         return cls.__wd14tagger
 
